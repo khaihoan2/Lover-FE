@@ -17,6 +17,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [IndexComponent, HeaderComponent, TopModelComponent, DescriptionComponent, OutModelComponent, GalleryModelComponent, QuoteComponent, NewFaceComponent, TeamComponent, ContactComponent, FooterComponent],
+    exports: [
+        HeaderComponent,
+        FooterComponent
+    ],
   imports: [
     CommonModule,
     BuyerRoutingModule
