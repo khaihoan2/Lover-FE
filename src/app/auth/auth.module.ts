@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {BuyerModule} from '../buyer/buyer.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {BuyerModule} from '../buyer/buyer.module';
     imports: [
         CommonModule,
         AuthRoutingModule,
-        BuyerModule
+        BuyerModule,
+        ReactiveFormsModule
     ]
 })
 export class AuthModule { }

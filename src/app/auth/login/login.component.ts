@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from '../../service/authentication.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {UserToken} from '../../model/user-token';
+import {User} from '../../model/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +12,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  userForm = new FormGroup({
+    username: new FormControl(),
+    password: new FormControl()
+  })
+
+  userToken: UserToken = {}
+
+  user: User;
+
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.user = this.userForm.value;
+    this.authenticationService.login(this.userForm.get('username').value, this.userForm.get('password').value).subscribe(data => {
+      this.userToken = data;
+      localStorage.setItem('userToken', JSON.stringify(this.userToken));
+      let roles = this.userToken.roles;
+      for (let i = 0; i < roles.length; i++) {
+       if (roles.name == 'ROLE_ADMIN') {
+         this.router.navigate(['admin']);
+         return;
+       }
+      }
+      this.router.navigate(['/buyer'])
+    }, error => console.log(error.message));
   }
 
 }
