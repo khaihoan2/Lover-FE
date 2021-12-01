@@ -526,17 +526,6 @@
                   <!-- eof contacts -->
 
                   <li class="top-includes">
-											<span class="top-includes d-xl-flex">
-												<a href="#">
-													<i class="fa fa-sign-in" aria-hidden="true"></i>
-												</a>
-												<a href="#">
-													<i class="fa fa-user-o" aria-hidden="true"></i>
-												</a>
-												<a href="#">
-													<i class="fa fa-calendar" aria-hidden="true"></i>
-												</a>
-											</span>
                     <span class="header-phone">
 												<span>call us now</span>
 												<span class="phone"><span class="color-main">800</span> 123 4567</span>
@@ -547,31 +536,11 @@
 
 
               </nav>
-              <!-- eof main nav -->
-
-              <!--hidding includes on small devices. They are duplicated in topline-->
 
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-11">
             <div class="top-includes">
-              <ul class="top-includes d-none d-xl-flex">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
               <span class="header-phone">
 									<span>call us now</span>
 									<span class="phone"><span class="color-main">800</span> 123 4567</span>
@@ -594,17 +563,6 @@
 
           <div class="col-md-12 text-center">
             <h1>Account - Login</h1>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a href="#">Shop</a>
-              </li>
-              <li class="breadcrumb-item active">
-                Account - Login
-              </li>
-            </ol>
           </div>
 
           <div class="fw-divider-space hidden-below-lg mt-160"></div>
@@ -623,13 +581,25 @@
               <!-- .entry-header -->
               <div class="entry-content">
                 <div class="woocommerce">
-                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="login()">
+                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="userForm.valid && login()">
                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                       <input type="text" placeholder="Username or email" class="woocommerce-Input w-100 woocommerce-Input--text input-text" formControlName="username">
                     </p>
+                    <div
+                      *ngIf="!username?.valid && (username?.dirty ||username?.touched)">
+                      <div [hidden]="!username.errors.required" style="color: red">
+                        First Name is required
+                      </div>
+                    </div>
                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                       <input placeholder="Password" class="woocommerce-Input w-100 woocommerce-Input--text input-text" type="password" formControlName="password">
                     </p>
+                    <div
+                      *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+                      <div [hidden]="!password.errors.required" style="color: red">
+                        First Name is required
+                      </div>
+                    </div>
 
                     <p class="form-row d-flex flex-wrap justify-content-between">
                       <label class="woocommerce-form__label d-flex woocommerce-form__label-for-checkbox inline">

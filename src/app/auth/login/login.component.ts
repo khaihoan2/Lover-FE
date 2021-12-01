@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../service/authentication.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserToken} from '../../model/user-token';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
@@ -13,8 +13,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   userForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
   userToken: UserToken = {}
@@ -43,4 +43,11 @@ export class LoginComponent implements OnInit {
     }, error => console.log(error.message));
   }
 
+  get username() {
+    return this.userForm.get('username');
+  }
+
+  get password() {
+    return this.userForm.get('password');
+  }
 }
