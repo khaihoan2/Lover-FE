@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
+  },
+  {
+    path: 'buyer',
+    loadChildren: () => import('./buyer/buyer.module').then(module => module.BuyerModule)
   }
 ];
 
@@ -13,5 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }
