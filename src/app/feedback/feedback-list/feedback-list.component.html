@@ -1,0 +1,28 @@
+<h1>feed List Form</h1>
+<table class="table">
+  <thead class="table-dark">
+  <tr>
+    <td>#</td>
+    <td>content</td>
+    <td>rating</td>
+    <td>sent_at</td>
+<!--    <td>reservation_id</td>-->
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let feedback of feedbacks ;index as i">
+    <td>{{i + 1}}</td>
+    <td>{{feedback.content}}</td>
+    <td>{{feedback.rating}}</td>
+    <td>{{feedback.sent_at}}</td>
+<!--    <td>{{feedback.reservation_id.rentee}}</td>-->
+    <td><a routerLink="/feedback/edit/{{feedback.id}}">Edit</a></td>
+    <td><a routerLink="/feedback/delete/{{feedback.id}}">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+<tbody>
+<a routerLink="/feedback/create" > Thêm phản hồi </a>
+</tbody>
