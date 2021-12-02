@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../model/user';
-import {USER_API_URL} from '../api-urls';
+import {AUTH_API_URL, USER_API_URL} from '../api-urls';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,17 @@ export class UserService {
 
   deleteById(id: number): Observable<any> {
     return this.httpClient.delete<any>(USER_API_URL + `/${id}`);
+  }
+
+  findByUsername(username: string): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/checkUsername/${username}`);
+  }
+
+  register(user: User): Observable<any> {
+    return this.httpClient.post(`${AUTH_API_URL}/register`, user);
+  }
+
+  findUserByJoinedAtDesc(page: number): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`);
   }
 }

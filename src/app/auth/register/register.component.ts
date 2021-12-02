@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,13 +20,20 @@ export class RegisterComponent implements OnInit {
 
   user: User = {};
 
-  constructor(private userService: UserService) { }
+  checkUsername: boolean = false;
+
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   register() {
-    return false;
+    this.user = this.userForm.value;
+    this.userService.register(this.user).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/auth/login'])
+    }, error => error.message);
   }
 
   get username() {
@@ -44,7 +52,12 @@ export class RegisterComponent implements OnInit {
     return this.userForm.get('phone');
   }
 
-  checkUsername(event) {
-    console.log(event.target.value);
+  checkUsernameDuplicate(event) {
+    let username = event.target.value;
+    this.userService.findByUsername(username).subscribe(() => {
+      this.checkUsername = false;
+    }, () => {
+      this.checkUsername = true;
+    })
   }
 }

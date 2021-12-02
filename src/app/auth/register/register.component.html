@@ -581,9 +581,9 @@
               <!-- .entry-header -->
               <div class="entry-content">
                 <div class="woocommerce">
-                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="userForm.valid && register()">
+                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="!checkUsername && userForm.valid && register()">
                     <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
-                      <input type="text" placeholder="Username" class="woocommerce-Input w-100 woocommerce-Input--text input-text" formControlName="username" (change)="checkUsername($event)">
+                      <input type="text" placeholder="Username" class="woocommerce-Input w-100 woocommerce-Input--text input-text" formControlName="username" (change)="checkUsernameDuplicate($event)">
                       <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" style="color: red">
                         <div [hidden]="!username.errors.required">
                           Username is required
@@ -591,6 +591,9 @@
                         <div [hidden]="!username.errors.minlength">
                           Min Length is 6
                         </div>
+                      </div>
+                      <div [hidden]="!checkUsername" style="color: red">
+                        Username already exists
                       </div>
                     </div>
 
