@@ -12,6 +12,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  currentUser: UserToken = {};
+
   userForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
@@ -29,18 +31,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user = this.userForm.value;
-    this.authenticationService.login(this.userForm.get('username').value, this.userForm.get('password').value).subscribe(data => {
-      this.userToken = data;
-      localStorage.setItem('userToken', JSON.stringify(this.userToken));
-      let roles = this.userToken.roles;
-      for (let i = 0; i < roles.length; i++) {
-       if (roles.name == 'ROLE_ADMIN') {
-         this.router.navigate(['admin']);
-         return;
-       }
-      }
-      this.router.navigate(['/buyer'])
-    }, error => console.log(error.message));
+    this.authenticationService.login(this.userForm.get('username').value, this.userForm.get('password').value);
+    this.currentUser = this.authenticationService.currentUserValue;
+
   }
 
   get username() {
