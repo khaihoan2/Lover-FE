@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
   },
   {
-    path: 'buyer',
+    path: '',
     loadChildren: () => import('./buyer/buyer.module').then(module => module.BuyerModule)
   }
 ];

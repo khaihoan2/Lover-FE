@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
+import {BuyerModule} from './buyer/buyer.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        BuyerModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

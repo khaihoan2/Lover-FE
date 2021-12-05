@@ -15,16 +15,15 @@
         </div>
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
-        <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30 animate" data-animation="fadeInDown" data-filters=".gallery-filters">
-
+        <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">
             <div class="vertical-item item-gallery content-absolute text-center ds">
-              <a href="personal-modal-page.html" class="item-media h-100 w-100 d-block">
+              <a routerLink="/info-seller/{{user.id}}" class="item-media h-100 w-100 d-block">
                 <img src="http://localhost:8080/{{user.avatar}}" alt="img">
                 <div class="media-links"></div>
               </a>
               <div class="item-content">
-                <div class="item-title"  style="top: -60px">
+                <div class="item-title">
                   <div class="title">{{user.firstName}}</div>
                   <div class="subtitle">Ball</div>
                 </div>
@@ -57,7 +56,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <div class="row">

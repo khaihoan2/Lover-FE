@@ -25,4 +25,5 @@ export interface User {
   rentedCounter?: number;
   status?: any;
   images?: any;
+  services?: any[];
 }

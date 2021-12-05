@@ -1,0 +1,173 @@
+<app-header></app-header>
+
+<section class="ds pt-60 s-pt-70 s-pb-40 s-pb-sm-70 s-py-lg-100 s-py-xl-150 c-mb-30 c-gutter-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6">
+        <div class="vertical-item content-padding item-gallery">
+          <div class="model border-rad-5">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="{{apiUrl}}/{{imageFirst.name}}">
+                </div>
+                <div class="carousel-item" *ngFor="let image of images">
+                  <img class="d-block w-100" src="{{apiUrl}}/{{image.name}}">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <h2 class="entry-title">{{user.firstName + " " + user.lastName}}</h2>
+        <br>
+        <div class="fw-divider-space hidden-below-lg mt--10"></div>
+        <p>
+          {{user.description}}
+        </p>
+        <table class="table">
+          <tbody>
+          <tr class="progress-title">
+            <td>Year of birth</td>
+            <td>{{user.yearOfBirth}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Gender</td>
+            <td>{{user.gender}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>City</td>
+            <td>{{user.city}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Nationality</td>
+            <td>{{user.nationality}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Height</td>
+            <td>{{user.height}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Weight</td>
+            <td>{{user.weight}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Facebook link</td>
+            <td><a href="{{user.facebookUrl}}" class="btn btn-link">{{user.facebookUrl}}</a></td>
+          </tr>
+          <tr class="progress-title">
+            <td>Join date</td>
+            <td>{{user.joinedAt}}</td>
+          </tr>
+          <tr class="progress-title">
+            <td>Rented counter</td>
+            <td>{{user.rentedCounter}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <br>
+        <!-- Large modal -->
+        <button type="button" class="btn btn-maincolor" data-toggle="modal" data-target=".bd-example-modal-lg">rent
+          now
+        </button>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content ds">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hire a lover</h5>
+                <button type="button" class="close color-white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div
+                  data-animation="scaleAppear">
+                  <form class="contact-form c-mb-20 c-gutter-20" method="post" action="http://webdesign-finder.com/">
+                    <div class="row">
+                      <div class="col-sm-12 mt-20">
+                        <h5>Choose service</h5>
+                        <table class="table">
+                          <thead>
+                          <tr>
+                            <th scope="col">Service</th>
+                            <th scope="col">Price</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let serviceDetail of serviceDetails; let i = index">
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="service{{i}}" value="{{serviceDetail.price}}">
+                                <label class="form-check-label" for="service{{i}}">
+                                  {{serviceDetail.service.name}}
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              ${{serviceDetail.price}}/hour
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <p style="color: red" id="checkerInputService"></p>
+                      </div>
+                      <div class="col-sm-6 mt-20">
+                        <label for="from-time">From time</label>
+                        <br>
+                        <input type="time" id="from-time" class="d-block w-100">
+                        <p id="error-from-time" style="color: red;"></p>
+                      </div>
+                      <div class="col-sm-6 mt-20">
+                        <label for="to-time">To time</label>
+                        <br>
+                        <input type="time" id="to-time" class="d-block w-100">
+                        <p id="error-to-time" style="color: red;"></p>
+                      </div>
+                      <p id="error-time" style="color: red"></p>
+                      <div class="col-sm-12 mt-20">
+                        <label for="to-time">Location</label>
+                        <br>
+                        <input type="text" id="location" class="d-block w-100">
+                      </div>
+                    </div>
+                    <!--                        <div class="row">-->
+                    <!--                          <div class="col-sm-12">-->
+                    <!--                            <div class="form-group">-->
+                    <!--                              <textarea rows="6" cols="45" name="message" class="form-control" placeholder="your message"></textarea>-->
+                    <!--                              <button type="submit" class="btn-submit"><i class="fa fa-paper-plane"></i></button>-->
+                    <!--                            </div>-->
+                    <!--                          </div>-->
+
+                    <!--                        </div>-->
+                  </form>
+                  <h5>Total:    {{totalMoney | currency:'USD':true:'3.2-2'}}</h5>
+                </div>
+                <button type="button" class="my-btn-main" (click)="calculatorTotalMoney()">Total money</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="my-btn-close btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="my-btn-main" (click)="saveService()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fw-divider-space hidden-below-lg mt-25"></div>
+  <div class="fw-divider-space hidden-xs hidden-above-lg mt-30"></div>
+</section>
+
+<app-footer></app-footer>

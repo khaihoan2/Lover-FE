@@ -4,8 +4,12 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8080',
   userApiUrl: 'http://localhost:8080/api/users',
-  authApiUrl: 'http://localhost:8080/api/auth'
+  authApiUrl: 'http://localhost:8080/api/auth',
+  imageApiUrl: 'http://localhost:8080/api/images',
+  serviceDetailApiUrl: 'http://localhost:8080/api/user-services',
+  reservationApiUrl: 'http://localhost:8080/api/reservations'
 };
 
 /*
