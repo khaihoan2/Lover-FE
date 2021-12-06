@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {BuyerModule} from './buyer/buyer.module';
+import {HttpClientModule} from '@angular/common/http';
+import {AdminModule} from './admin/admin.module';
 
 @NgModule({
   declarations: [
