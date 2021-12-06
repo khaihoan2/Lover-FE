@@ -11,6 +11,7 @@ import {ServiceDetail} from '../../model/service-detail';
 import {Reservation} from '../../model/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ReservationService} from '../../service/reservation.service';
+import {ReservationDetail} from '../../model/Reservation-detail';
 
 declare var $: any;
 
@@ -44,10 +45,13 @@ export class InfoSellerComponent implements OnInit{
 
   reservation: Reservation = {};
 
+  reservationDetails: ReservationDetail[] = [];
+
 
   fromTime = '';
   toTime = '';
   inputServiceCheckbox = [];
+  inputServiceName = [];
 
   constructor(private userService: UserService,
               private imageService: ImageService,
@@ -146,12 +150,17 @@ export class InfoSellerComponent implements OnInit{
     for (let i = 0; i < this.serviceDetails.length; i++) {
       let inputValue = +$(`#service${i}:checked`).val();
       this.inputServiceCheckbox.push(inputValue);
+      let serviceName = $('.form-check-label')[i].innerHTML;
+      this.inputServiceName.push(serviceName);
+
     }
     let checker = this.inputServiceCheckbox.every(v => v == undefined || v == '' || isNaN(v));
     return checker;
   }
 
   saveService() {
+    this.inputServiceName = [];
+    this.inputServiceCheckbox = [];
     let checker = this.updateInputService();
     this.checkInputService = !(this.fromTime == '' || this.toTime == '' || checker || this.toTime < this.fromTime);
     if (!this.checkInputService) {
@@ -163,16 +172,25 @@ export class InfoSellerComponent implements OnInit{
       $('#error-time').text('Total rental time must be more than 30 minutes');
       return;
     }
+    for (let i = 0; i < this.inputServiceCheckbox.length; i++) {
+      if (!isNaN(this.inputServiceCheckbox[i])) {
+        this.reservationDetails.push({
+          serviceName: this.inputServiceName[i],
+          price: this.inputServiceCheckbox[i]
+        })
+      }
+    }
     this.reservation = {
       renter: {id: this.authenticationService.currentUserValue.id},
       rentee: {id: this.user.id},
       startFrom: $('#from-time').val(),
       endAt: $('#to-time').val(),
       location: $('#location').val(),
-      totalMoney: this.totalMoney
+      totalMoney: this.totalMoney,
+      reservationDetails: this.reservationDetails
     }
     this.reservationService.save(this.reservation).subscribe(data => {
-
+      $('.bd-example-modal-lg').modal('hide');
     }, error => console.log(error.message));
   }
 
