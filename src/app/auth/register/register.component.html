@@ -1,0 +1,106 @@
+<div id="canvas">
+  <div id="box_wrapper">
+    <app-header></app-header>
+    <section class="page_title s-parallax bottom_mask_subtract s-overlay ds title-overlay s-py-md-25">
+      <div class="container">
+        <div class="row">
+
+          <div class="fw-divider-space hidden-below-lg mt-160"></div>
+          <div class="fw-divider-space hidden-above-lg mt-100"></div>
+
+          <div class="col-md-12 text-center">
+            <h1>Account - Register</h1>
+          </div>
+
+          <div class="fw-divider-space hidden-below-lg mt-160"></div>
+          <div class="fw-divider-space hidden-above-lg mt-100"></div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="ds s-py-70 s-py-lg-100 s-py-xl-150">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-12">
+            <article>
+              <!-- .entry-header -->
+              <div class="entry-content">
+                <div class="woocommerce">
+                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="!checkUsername && userForm.valid && register()">
+                    <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
+                      <input type="text" placeholder="Username" class="woocommerce-Input w-100 woocommerce-Input--text input-text" formControlName="username" (change)="checkUsernameDuplicate($event)">
+                      <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" style="color: red">
+                        <div [hidden]="!username.errors.required">
+                          Username is required
+                        </div>
+                        <div [hidden]="!username.errors.minlength">
+                          Min Length is 6
+                        </div>
+                      </div>
+                      <div [hidden]="!checkUsername" style="color: red">
+                        Username already exists
+                      </div>
+                    </div>
+
+                    <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
+                      <input placeholder="Password" class="woocommerce-Input w-100 woocommerce-Input--text input-text" type="password" formControlName="password">
+                      <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)" style="color: red">
+                        <div [hidden]="!password.errors.required">
+                          Password is required
+                        </div>
+                        <div [hidden]="!password.errors.minlength">
+                          Min Length is 6
+                        </div>
+                        <div [hidden]="!password.errors.maxlength">
+                          Max Length is 15
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
+                      <input placeholder="Email" class="woocommerce-Input w-100 woocommerce-Input--text input-text" type="email" formControlName="email">
+                      <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)" style="color: red">
+                        <div [hidden]="!email.errors.required">
+                          Email is required
+                        </div>
+                        <div [hidden]="!email.errors.email">
+                          Wrong email format
+                        </div>
+                      </div>
+                    </div>
+                    <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
+                      <input placeholder="Phone" class="woocommerce-Input w-100 woocommerce-Input--text input-text" type="text" formControlName="phone">
+                      <div *ngIf="!phone?.valid && (phone?.dirty ||phone?.touched)" style="color: red">
+                        <div [hidden]="!phone.errors.required">
+                          Phone is required
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="form-row d-flex flex-wrap justify-content-between">
+                      <label class="woocommerce-form__label d-flex woocommerce-form__label-for-checkbox inline">
+                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever">
+                        <span class="ml-2">Remember me</span>
+                      </label>
+                    </p>
+                    <p class="form-row align-items-start d-flex flex-wrap justify-content-between">
+                      <input type="submit" class="woocommerce-Button button mt-0" name="login" value="Signup">
+                    </p>
+                  </form>
+                </div>
+              </div>
+              <!-- .entry-content -->
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fw-divider-space hidden-below-lg mt-50"></div>
+    </section>
+
+    <app-footer></app-footer>
+  </div>
+</div>
