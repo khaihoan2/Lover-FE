@@ -1,27 +1,14 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {Reservation} from '../model/reservation';
-=======
 import {HttpClient} from '@angular/common/http';
 import {Reservation} from '../model/reservation';
 import {Observable} from 'rxjs';
 import {RESERVATION_API_URL} from '../api-urls';
->>>>>>> develop
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
-<<<<<<< HEAD
-  private baseUrl = 'http://localhost:8080/api/reservations';
-  constructor(private http: HttpClient) { }
 
- getByIdReservation( id: number): Observable<Reservation> {
-  return this.http.get(this.baseUrl + `/${id}`);
-}
-=======
   reservation: Reservation = {};
 
   constructor(private httpClient: HttpClient) { }
@@ -46,5 +33,4 @@ export class ReservationService {
     return this.httpClient.put(`${RESERVATION_API_URL}/${id}`, this.reservation);
   }
 
->>>>>>> develop
 }
