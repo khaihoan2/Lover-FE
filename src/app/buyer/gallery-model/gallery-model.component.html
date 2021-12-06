@@ -21,7 +21,7 @@
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
         <form>
-          <input>
+          <input (input)="findUserFull()" name="username" type="search" [(ngModel)]="u">
         </form>
 
         <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">

@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
+  templateUrl:  './gallery-model.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     this.findUserFull();
   }
 
-  private findUserFull() {
+   findUserFull() {
     this.userService.findByUserFull(this.username, this.firstName, this.viewCounter, this.status).subscribe(data => {
       this.users = data;
     }, error => console.error(error));
