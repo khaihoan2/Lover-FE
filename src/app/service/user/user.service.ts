@@ -45,5 +45,7 @@ export class UserService {
   }
 
   findByUserFull(username: string, firstName: string, viewCounter: number, status: boolean): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${AUTH_API_URL}/search?username=${username} & ${firstName} & ${viewCounter} & ${status}`);
+    return this.httpClient.get<User[]>
+    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}&viewCounter=${viewCounter}&status=${status}`);
   }
+}
