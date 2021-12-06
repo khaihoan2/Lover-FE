@@ -17,10 +17,12 @@ import { TopModelComponent } from './top-model/top-model.component';
 import { IndexComponent } from './index/index.component';
 import { RentComponent } from './rent/rent.component';
 import {FormsModule} from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { InfoCartComponent } from './info-cart/info-cart.component';
 
 
 @NgModule({
-  declarations: [DescriptionComponent, OutModelComponent, GalleryModelComponent, QuoteComponent, NewFaceComponent, TeamComponent, ContactComponent, FooterComponent, InfoSellerComponent, PageSliderComponent, HeaderComponent, PageSliderComponent, ContactComponent, DescriptionComponent, OutModelComponent, QuoteComponent, TeamComponent, TopModelComponent, IndexComponent, RentComponent],
+  declarations: [DescriptionComponent, OutModelComponent, GalleryModelComponent, QuoteComponent, NewFaceComponent, TeamComponent, ContactComponent, FooterComponent, InfoSellerComponent, PageSliderComponent, HeaderComponent, PageSliderComponent, ContactComponent, DescriptionComponent, OutModelComponent, QuoteComponent, TeamComponent, TopModelComponent, IndexComponent, RentComponent, CartComponent, InfoCartComponent],
   exports: [
     FooterComponent,
     HeaderComponent,

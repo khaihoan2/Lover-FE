@@ -11,7 +11,7 @@
           <span>24/7 free</span>
         </span>
         <span class="header-soc">
-          <a routerLink="/" *ngIf="currentUser">
+          <a routerLink="/cart/{{currentUser.id}}" *ngIf="currentUser">
             <i class="fa fa-user-o" aria-hidden="true"></i>
             {{currentUser.name}}
           </a>

@@ -168,7 +168,8 @@ export class InfoSellerComponent implements OnInit{
       rentee: {id: this.user.id},
       startFrom: $('#from-time').val(),
       endAt: $('#to-time').val(),
-      location: $('#location').val()
+      location: $('#location').val(),
+      totalMoney: this.totalMoney
     }
     this.reservationService.save(this.reservation).subscribe(data => {
 

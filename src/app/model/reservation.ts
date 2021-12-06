@@ -13,4 +13,8 @@ export interface Reservation {
   location?: string;
 
   reserveAt?: string;
+
+  status?: any;
+
+  totalMoney?: number;
 }

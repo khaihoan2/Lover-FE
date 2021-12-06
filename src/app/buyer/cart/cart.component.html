@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<section id="contacts" class="contacts-section mt-60 top_mask_add ds overflow-visible background-contact s-pt-70 s-pb-60 s-pt-md-95 s-pb-md-80 s-pt-xl-170 s-pb-xl-140 c-gutter-30">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Lover name</th>
+        <th scope="col">Rental period</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Total money</th>
+        <th scope="col">Action</th>
+        <th scope="col">Info</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let reservation of reservations; let i = index">
+        <th scope="row">{{++i}}</th>
+        <td>{{reservation.rentee.firstName + " " + reservation.rentee.lastName}}</td>
+        <td>{{((reservation.endAt.slice(11, 13) * 60 + +reservation.endAt.slice(14, 16)) - (reservation.startFrom.slice(11, 13) * 60 + +reservation.startFrom.slice(14, 16))) / 60}}h</td>
+        <td>{{reservation.startFrom.slice(0, 10)}}</td>
+        <td>
+          <p *ngIf="reservation.status == true">Completed</p>
+          <p *ngIf="reservation.status == false">Received</p>
+          <p *ngIf="reservation.status == null">Wait for confirmation</p>
+        </td>
+        <td>{{reservation.totalMoney}}</td>
+        <td>
+          <button *ngIf="reservation.status == false" type="button" class="my-btn-main" (click)="complete(reservation.id)">Complete</button>
+        </td>
+        <td>
+          <button type="button" class="my-btn-main" (click)="showInfoCart(reservation.id)">Info</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<app-footer></app-footer>
