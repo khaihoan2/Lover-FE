@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../service/user.service';
 import {User} from '../../model/user';
 import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-gallery-model',

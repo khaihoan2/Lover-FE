@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../service/user.service';
 import {User} from '../../model/user';
 import {ActivatedRoute} from '@angular/router';
 import {Image} from '../../model/image';
@@ -11,6 +10,7 @@ import {ServiceDetail} from '../../model/service-detail';
 import {Reservation} from '../../model/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ReservationService} from '../../service/reservation.service';
+import {UserService} from '../../service/user/user.service';
 
 declare var $: any;
 

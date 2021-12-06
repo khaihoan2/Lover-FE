@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from '../model/user';
-import {AUTH_API_URL, USER_API_URL} from '../api-urls';
 import {User} from '../../model/user';
-import {USER_API_URL} from '../../api-urls';
+import {AUTH_API_URL, USER_API_URL} from '../../api-urls';
 
 @Injectable({
   providedIn: 'root'

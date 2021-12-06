@@ -9,11 +9,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
-  },
-  {
-    path: 'buyer',
     loadChildren: () => import('./buyer/buyer.module').then(module => module.BuyerModule)
   }
 ];

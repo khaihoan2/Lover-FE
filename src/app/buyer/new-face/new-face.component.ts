@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../model/user';
-import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {API_URL} from '../../api-urls';
-import {count} from 'rxjs/operators';
+import {UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-new-face',
