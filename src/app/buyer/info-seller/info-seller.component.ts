@@ -11,7 +11,7 @@ import {Reservation} from '../../model/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ReservationService} from '../../service/reservation.service';
 import {ReservationDetail} from '../../model/Reservation-detail';
-import {UserService} from '../../service/user.service';
+import {UserService} from '../../service/user/user.service';
 
 declare var $: any;
 
