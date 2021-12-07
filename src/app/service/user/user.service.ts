@@ -48,4 +48,16 @@ export class UserService {
     return this.httpClient.get<User[]>
     (`${USER_API_URL}/search?username=${username}&firstName=${firstName}&viewCounter=${viewCounter}`);
   }
+
+  findUserHighestRanking(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/rating`);
+  }
+
+  findUserLimitFemaleLimitMale(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/ratingLimitFemaleLimitMale`);
+  }
+
+  findUserSuitable(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/suitableProposal`);
+  }
 }

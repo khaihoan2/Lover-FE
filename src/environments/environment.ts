@@ -10,8 +10,7 @@ export const environment = {
   imageApiUrl: 'http://localhost:8080/api/images',
   serviceDetailApiUrl: 'http://localhost:8080/api/user-services',
   reservationApiUrl: 'http://localhost:8080/api/reservations',
-  cityApiUrl: 'http://localhost:8080/api/cities',
-  nationalityApiUrl: 'http://localhost:8080/api/nationalities',
+  reservationDetailApiUrl: 'http://localhost:8080/api/reservation-details/info'
 };
 
 /*

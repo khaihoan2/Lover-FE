@@ -12,10 +12,13 @@
         <th scope="col">Date</th>
         <td scope="col">{{reservation.startFrom.slice(0, 10)}}</td>
       </tr>
+      <tr *ngFor="let reservationDetail of reservationDetails">
+        <th scope="col">{{reservationDetail.serviceName}}</th>
+        <td scope="col">{{reservationDetail.price | currency:'USD':true:'3.2-2'}}</td>
+      </tr>
       <tr>
-        <th scope="col">Rental period</th>
-        <td scope="col">{{((reservation.endAt.slice(11, 13) * 60 + +reservation.endAt.slice(14, 16))
-          - (reservation.startFrom.slice(11, 13) * 60 + +reservation.startFrom.slice(14, 16))) / 60 | currency:'H':true}}</td>
+        <th scope="col">Date</th>
+        <td scope="col">{{reservation.startFrom.slice(0, 10)}}</td>
       </tr>
       <tr>
         <th scope="col">Status</th>
