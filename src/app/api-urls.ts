@@ -11,3 +11,6 @@ export const IMAGE_API_URL = `${environment.imageApiUrl}`;
 export const SERVICE_DETAIL_API_URL = `${environment.serviceDetailApiUrl}`;
 
 export const RESERVATION_API_URL = `${environment.reservationApiUrl}`;
+
+export const RESERVATION_DETAIL_API_URL = `${environment.reservationDetailApiUrl}`;
+

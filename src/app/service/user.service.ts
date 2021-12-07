@@ -43,4 +43,16 @@ export class UserService {
   findUserByJoinedAtDesc(page: number): Observable<any> {
     return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`);
   }
+
+  findUserHighestRanking(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/rating`);
+  }
+
+  findUserLimitFemaleLimitMale(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/ratingLimitFemaleLimitMale`);
+  }
+
+  findUserSuitable(): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}/suitableProposal`);
+  }
 }
