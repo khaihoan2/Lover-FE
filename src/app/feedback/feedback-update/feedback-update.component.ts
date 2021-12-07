@@ -46,9 +46,9 @@ export class FeedbackUpdateComponent implements OnInit {
   }
 
   private getOneReservation() {
-    this.reservationService.getByIdReservation(this.id).subscribe(data => {
-      this.feedback = data;
-    }, error => alert(error));
+    // this.reservationService.getByIdReservation(this.id).subscribe(data => {
+    //   this.feedback = data;
+    // }, error => alert(error));
   }
 
   editFeedBack() {

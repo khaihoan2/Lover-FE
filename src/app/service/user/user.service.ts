@@ -41,11 +41,11 @@ export class UserService {
   }
 
   findUserByJoinedAtDesc(page: number): Observable<any> {
-    return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`);
+    return this.httpClient.get(`${USER_API_URL}`);
   }
 
-  findByUserFull(username: string, firstName: string, viewCounter: number, status: boolean): Observable<User[]> {
+  findByUserFull(username: string, firstName: string, viewCounter: string, status: string, page: number): Observable<User[]> {
     return this.httpClient.get<User[]>
-    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}&viewCounter=${viewCounter}&status=${status}`);
+    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}&viewCounter=${viewCounter}`);
   }
 }

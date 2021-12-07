@@ -20,9 +20,15 @@
         </div>
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
-        <form>
-          <app-search></app-search>
+
+        <form (ngSubmit)="submid()">
+          <input type="search" name="username" [(ngModel)]="username" placeholder="username">
+          <input type="search" name="firstName" [(ngModel)]="firstName" placeholder="firstName">
+          <input type="search" name="viewCounter" [(ngModel)]="viewCounter" placeholder="viewCounter">
+          <input type="search" name="status" [(ngModel)]="status" placeholder="status">
+          <button type="submit">search</button>
         </form>
+
 
         <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">

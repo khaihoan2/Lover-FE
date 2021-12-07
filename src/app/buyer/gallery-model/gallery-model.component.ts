@@ -9,7 +9,10 @@ import {UserService} from '../../service/user/user.service';
   styleUrls: ['./gallery-model.component.css']
 })
 export class GalleryModelComponent implements OnInit {
-
+  username: string;
+  firstName: string;
+  viewCounter: string;
+  status: any = null;
   users: User[] = [];
 
   constructor(private userService: UserService,
@@ -23,6 +26,11 @@ export class GalleryModelComponent implements OnInit {
     this.userService.findUserByJoinedAtDesc(page).subscribe(data => {
       this.users = data;
     }, error => console.log(error.message));
+  }
+  submid() {
+    this.userService.findByUserFull(this.username, this.firstName, this.viewCounter, this.status, 0).subscribe((data: any) => {
+      this.users = data.content;
+    }, error => alert(error));
   }
 
 }

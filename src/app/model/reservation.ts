@@ -17,4 +17,6 @@ export interface Reservation {
   status?: any;
 
   totalMoney?: number;
+
+  reservationDetails?: any[];
 }

@@ -19,7 +19,6 @@ import {RentComponent} from './rent/rent.component';
 import {FormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {InfoCartComponent} from './info-cart/info-cart.component';
-import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
