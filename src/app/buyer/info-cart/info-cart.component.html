@@ -1,46 +1,140 @@
 <app-header></app-header>
 
-<section id="contacts" class="contacts-section mt-60 top_mask_add ds overflow-visible background-contact s-pt-70 s-pb-60 s-pt-md-95 s-pb-md-80 s-pt-xl-170 s-pb-xl-140 c-gutter-30">
+<section class="page_title s-parallax bottom_mask_subtract s-overlay ds title-overlay s-py-md-25">
   <div class="container">
-    <table class="table">
-      <tbody>
-      <tr>
-        <th scope="col">Lover name</th>
-        <td scope="col">{{reservation.rentee.firstName + " " + reservation.rentee.lastName}}</td>
-      </tr>
-      <tr>
-        <th scope="col">Date</th>
-        <td scope="col">{{reservation.startFrom.slice(0, 10)}}</td>
-      </tr>
-      <tr *ngFor="let reservationDetail of reservationDetails">
-        <th scope="col">{{reservationDetail.serviceName}}</th>
-        <td scope="col">{{reservationDetail.price | currency:'USD':true:'3.2-2'}}</td>
-      </tr>
-      <tr>
-        <th scope="col">Date</th>
-        <td scope="col">{{reservation.startFrom.slice(0, 10)}}</td>
-      </tr>
-      <tr>
-        <th scope="col">Status</th>
-        <td scope="col">
-          <p *ngIf="reservation.status == true">Completed</p>
-          <p *ngIf="reservation.status == false">Received</p>
-          <p *ngIf="reservation.status == null">Wait for confirmation</p>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Total money</th>
-        <td scope="col">{{reservation.totalMoney | currency:'USD':true:'3.2-2'}}</td>
-      </tr>
-      <tr *ngIf="reservation.status == false">
-        <th scope="col">Active</th>
-        <td scope="col">
-          <button type="button" class="my-btn-main" (click)="completed(reservation.id)">Completed</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="row">
+
+      <div class="fw-divider-space hidden-below-lg mt-160"></div>
+      <div class="fw-divider-space hidden-above-lg mt-100"></div>
+
+      <div class="col-md-12 text-center">
+        <h1>Account Details</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="">Home</a>
+          </li>
+          <li class="breadcrumb-item active">
+            Account Details
+          </li>
+        </ol>
+      </div>
+
+      <div class="fw-divider-space hidden-below-lg mt-160"></div>
+      <div class="fw-divider-space hidden-above-lg mt-100"></div>
+
+    </div>
   </div>
+</section>
+
+<section class="ds s-pt-70 s-pb-40 s-pb-sm-70 s-py-lg-100 s-py-xl-150 c-gutter-60">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <article id="post-1707" class="post-1707 page type-page status-publish hentry">
+          <header class="entry-header">
+            <h1 class="entry-title">Order received</h1>
+            <span class="edit-link">
+              <button *ngIf="reservation.status == 'Accepted'" type="button" class="my-btn-main" (click)="completed(reservation.id)">Completed</button>
+            </span>
+          </header>
+          <!-- .entry-header -->
+          <div class="entry-content">
+            <div class="woocommerce">
+              <div class="woocommerce-order">
+                <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
+                  Thank you. Your order has been received.
+                </p>
+
+                <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
+
+                  <li class="woocommerce-order-overview__order order">
+                    Order number: <strong>{{reservation.id}}</strong>
+                  </li>
+
+                  <li class="woocommerce-order-overview__date date">
+                    Date: <strong>{{reservation.startFrom.slice(0, 10)}}</strong>
+                  </li>
+
+                  <li class="woocommerce-order-overview__total total">
+                    Total: <strong>
+                        <span class="woocommerce-Price-amount amount">
+                            <span
+                              class="woocommerce-Price-currencySymbol">$</span>{{reservation.totalMoney}}</span>
+                  </strong>
+                  </li>
+
+
+                  <li class="woocommerce-order-overview__payment-method method">
+                    Status:
+                    <strong *ngIf="reservation.status == 'Accepted'">Accepted</strong>
+                    <strong *ngIf="reservation.status == 'Pending'">Pending</strong>
+                    <strong *ngIf="reservation.status == 'Rejected'">Rejected</strong>
+                    <strong *ngIf="reservation.status == 'Completed'">Completed</strong>
+                  </li>
+
+                  <li class="woocommerce-order-overview__date date">
+                    Location: <strong>{{reservation.location}}</strong>
+                  </li>
+
+                </ul>
+
+                <section class="woocommerce-order-details">
+
+                  <h4 class="woocommerce-order-details__title">Order details</h4>
+
+                  <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+
+                    <thead>
+                    <tr>
+                      <th class="woocommerce-table__product-name product-name">Service</th>
+                      <th class="woocommerce-table__product-table product-total">Total</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="woocommerce-table__line-item order_item" *ngFor="let reservationDetail of reservationDetails">
+
+                      <td class="woocommerce-table__product-name product-name">
+                        <a>{{reservationDetail.serviceName}}</a>
+                      </td>
+
+                      <td class="woocommerce-table__product-total product-total">
+																<span class="woocommerce-Price-amount amount">
+																	<span class="woocommerce-Price-currencySymbol">$</span>{{reservationDetail.price}}</span>
+                      </td>
+
+                    </tr>
+
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                      <th scope="row">Total:</th>
+                      <td>
+																<span class="woocommerce-Price-amount amount">
+																	<span class="woocommerce-Price-currencySymbol"></span>{{reservation.totalMoney | currency:'USD':true:'3.2-2'}}</span>
+                      </td>
+                    </tr>
+                    </tfoot>
+
+                  </table>
+
+                </section>
+
+
+              </div>
+            </div>
+          </div>
+          <!-- .entry-content -->
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="fw-divider-space hidden-below-lg mt-50"></div>
 </section>
 
 <app-footer></app-footer>
