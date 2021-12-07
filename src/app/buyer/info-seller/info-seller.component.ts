@@ -11,7 +11,8 @@ import {Reservation} from '../../model/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ReservationService} from '../../service/reservation.service';
 import {ReservationDetail} from '../../model/Reservation-detail';
-import {UserService} from '../../service/user.service';
+import {UserService} from '../../service/user/user.service';
+import {NotificationService} from '../../service/notification/notification.service';
 
 declare var $: any;
 
@@ -58,7 +59,8 @@ export class InfoSellerComponent implements OnInit{
               private serviceDetailService: ServiceDetailService,
               private authenticationService: AuthenticationService,
               private activatedRoute: ActivatedRoute,
-              private reservationService: ReservationService) {
+              private reservationService: ReservationService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -191,7 +193,8 @@ export class InfoSellerComponent implements OnInit{
     }
     this.reservationService.save(this.reservation).subscribe(data => {
       $('.bd-example-modal-lg').modal('hide');
-    }, error => console.log(error.message));
+      this.notificationService.notify('success', 'Order success');
+    }, error => this.notificationService.notify('error', 'Error'));
   }
 
   private updateInputService() {
