@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user/user.service';
@@ -13,6 +13,10 @@ export class GalleryModelComponent implements OnInit {
 
   apiUrlPage = `${USER_API_URL}/gallery?page=`
 
+  username: string;
+  firstName: string;
+  viewCounterMin: number;
+  viewCounterMax: number;
   users: User[] = [];
 
   totalElementDescJoinedAt = 0;
@@ -22,7 +26,8 @@ export class GalleryModelComponent implements OnInit {
   currentPage = 0;
 
   constructor(private userService: UserService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.findUserByDescJoinedAt(0);
@@ -67,4 +72,13 @@ export class GalleryModelComponent implements OnInit {
     this.currentPage = page;
     this.findUserByDescJoinedAt(this.currentPage);
   }
+  submid() {
+    if (this.username === undefined && this.firstName === undefined) {
+     return this.username = '', this.firstName = '';
+    }
+    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
+      this.users = data.content;
+    }, error => alert(error));
+  }
+
 }

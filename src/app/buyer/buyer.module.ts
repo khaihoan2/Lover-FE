@@ -38,10 +38,11 @@ import { SuggestionsComponent } from './suggestions/suggestions.component';
     TeamComponent,
     TopModelComponent
   ],
-    imports: [
-        CommonModule,
-        BuyerRoutingModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    BuyerRoutingModule,
+    FormsModule
+  ]
 })
-export class BuyerModule { }
+export class BuyerModule {
+}

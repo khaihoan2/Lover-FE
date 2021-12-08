@@ -42,6 +42,11 @@ export class UserService {
 
   findUserByDescJoinedAt(page: number): Observable<any> {
     return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`);
+
+  findByUserFull(username: string, firstName: string, viewCounterMin: number, viewCounterMax: number, page: number): Observable<User[]> {
+    return this.httpClient.get<User[]>
+    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}
+    &viewCounterMin=${viewCounterMin}&viewCounterMax=${viewCounterMax}`);
   }
 
   findUserHighestRanking(): Observable<any> {

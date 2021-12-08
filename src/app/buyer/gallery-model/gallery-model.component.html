@@ -16,6 +16,17 @@
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
         <div class="row masonry-layout c-gutter-30 c-mb-30">
+
+        <form (ngSubmit)="submid()">
+          <input type="search" name="username" [(ngModel)]="username" placeholder="username">
+          <input type="search" name="firstName" [(ngModel)]="firstName" placeholder="firstName">
+          <input type="search" name="viewCounter" [(ngModel)]="viewCounterMin" placeholder="viewCounterMin">
+          <input type="search" name="viewCounter" [(ngModel)]="viewCounterMax" placeholder="viewCounterMax">
+          <button type="submit">search</button>
+        </form>
+
+
+        <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">
             <div class="vertical-item item-gallery content-absolute text-center ds">
               <a routerLink="/info-seller/{{user.id}}" class="item-media h-100 w-100 d-block">
