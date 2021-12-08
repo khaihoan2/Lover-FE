@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ReservationService} from '../../service/reservation.service';
 import {Reservation} from '../../model/reservation';
 import {ActivatedRoute, Router} from '@angular/router';
+import {API_URL} from '../../api-urls';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
+  apiUrl = API_URL;
 
   reservations: Reservation[] = [];
 
@@ -26,7 +29,6 @@ export class CartComponent implements OnInit {
   findByRenter(id: any) {
     this.reservationService.findByRenter(id).subscribe(data => {
       this.reservations = data;
-      console.log(this.reservations);
     }, error => console.log(error.message));
   }
 

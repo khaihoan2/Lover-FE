@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ReservationService} from '../../service/reservation.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Reservation} from '../../model/reservation';
 import {ReservationDetailService} from '../../service/reservation-detail.service';
 import {ReservationDetail} from '../../model/Reservation-detail';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-info-cart',
@@ -18,7 +19,9 @@ export class InfoCartComponent implements OnInit {
 
   constructor(private reservationService: ReservationService,
               private reservationDetailService: ReservationDetailService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(param => {
@@ -36,8 +39,9 @@ export class InfoCartComponent implements OnInit {
 
   completed(id: any) {
     this.reservationService.accessInputStatus(id).subscribe(data => {
-
-    }, error => console.log(error.message));
+      this.notificationService.notify('success', 'Success'),
+        this.router.navigate([''])
+    }, error => this.notificationService.notify('error', 'Error'));
   }
 
   findReservationDetailById(id: any) {
