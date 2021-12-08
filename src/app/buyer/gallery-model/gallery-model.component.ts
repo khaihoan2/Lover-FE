@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user/user.service';
@@ -11,12 +11,13 @@ import {UserService} from '../../service/user/user.service';
 export class GalleryModelComponent implements OnInit {
   username: string;
   firstName: string;
-  viewCounter: string;
-  status: any = null;
+  viewCounterMin: number;
+  viewCounterMax: number;
   users: User[] = [];
 
   constructor(private userService: UserService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.findUserByJoinedAtDesc(0);
@@ -27,8 +28,12 @@ export class GalleryModelComponent implements OnInit {
       this.users = data;
     }, error => console.log(error.message));
   }
+
   submid() {
-    this.userService.findByUserFull(this.username, this.firstName, this.viewCounter, this.status, 0).subscribe((data: any) => {
+    if (this.username === undefined && this.firstName === undefined) {
+     return this.username = '', this.firstName = '';
+    }
+    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
       this.users = data.content;
     }, error => alert(error));
   }

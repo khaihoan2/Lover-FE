@@ -11,7 +11,7 @@ import {Reservation} from '../../model/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import {ReservationService} from '../../service/reservation.service';
 import {ReservationDetail} from '../../model/Reservation-detail';
-import {UserService} from '../../service/user.service';
+import { UserService } from 'src/app/service/user/user.service';
 
 declare var $: any;
 
@@ -23,7 +23,7 @@ declare var $: any;
     './info-seller.component.css'
   ]
 })
-export class InfoSellerComponent implements OnInit{
+export class InfoSellerComponent implements OnInit {
 
   user: User = {};
 
@@ -67,7 +67,7 @@ export class InfoSellerComponent implements OnInit{
       this.findById(id);
       this.findImagesByUserId(id);
       this.findServiceDetailByUserId(id);
-    })
+    });
   }
 
   findById(id: any) {
@@ -161,7 +161,7 @@ export class InfoSellerComponent implements OnInit{
   saveService() {
     this.inputServiceName = [];
     this.inputServiceCheckbox = [];
-    let checker = this.updateInputService();
+    const checker = this.updateInputService();
     this.checkInputService = !(this.fromTime == '' || this.toTime == '' || checker || this.toTime < this.fromTime);
     if (!this.checkInputService) {
       this.validator(checker);
@@ -188,7 +188,7 @@ export class InfoSellerComponent implements OnInit{
       location: $('#location').val(),
       totalMoney: this.totalMoney,
       reservationDetails: this.reservationDetails
-    }
+    };
     this.reservationService.save(this.reservation).subscribe(data => {
       $('.bd-example-modal-lg').modal('hide');
     }, error => console.log(error.message));

@@ -44,9 +44,10 @@ export class UserService {
     return this.httpClient.get(`${USER_API_URL}`);
   }
 
-  findByUserFull(username: string, firstName: string, viewCounter: string, status: string, page: number): Observable<User[]> {
+  findByUserFull(username: string, firstName: string, viewCounterMin: number, viewCounterMax: number, page: number): Observable<User[]> {
     return this.httpClient.get<User[]>
-    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}&viewCounter=${viewCounter}`);
+    (`${USER_API_URL}/search?username=${username}&firstName=${firstName}
+    &viewCounterMin=${viewCounterMin}&viewCounterMax=${viewCounterMax}`);
   }
 
   findUserHighestRanking(): Observable<any> {
