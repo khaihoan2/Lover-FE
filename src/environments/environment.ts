@@ -7,6 +7,7 @@ export const environment = {
   userApiUrl: 'http://localhost:8080/api/users',
   cityApiUrl: 'http://localhost:8080/api/cities',
   nationalityApiUrl: 'http://localhost:8080/api/nationalities',
+  authApiUrl: 'http://localhost:8080/api/auth'
 };
 
 /*
