@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import {UserService} from '../../service/user/user.service';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
   checkUsername: boolean = false;
 
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private notificationService: NotificationService) { }
 
   ngOnInit() {
   }
@@ -32,8 +34,9 @@ export class RegisterComponent implements OnInit {
     this.user = this.userForm.value;
     this.userService.register(this.user).subscribe(data => {
       console.log(data);
-      this.router.navigate(['/auth/login'])
-    }, error => error.message);
+      this.notificationService.notify('success', 'Account successfully created')
+      this.router.navigate(['/auth/login']);
+    }, error => this.notificationService.notify('error', 'Error'));
   }
 
   get username() {

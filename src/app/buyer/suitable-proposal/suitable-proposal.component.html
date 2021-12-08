@@ -1,4 +1,4 @@
-<section id="gallery" class="gallery-section gallery-6 bottom_mask_add overflow-visible ds s-pt-115 s-pb-70 s-pb-md-80 s-pt-md-135 s-pb-xl-155 s-pt-xl-205">
+<section id="suggestions" class="gallery-section gallery-6 bottom_mask_add overflow-visible ds s-pt-115 s-pb-70 s-pb-md-80 s-pt-md-135 s-pb-xl-155 s-pt-xl-205">
   <div class="container-fluid">
     <div class="row">
       <div class="fw-divider-space hidden-below-xl pt-70"></div>
@@ -8,7 +8,7 @@
       </div>
       <div class="col-lg-12">
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
-        <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
+        <div class="row masonry-layout c-gutter-30 c-mb-30">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">
             <div class="vertical-item item-gallery content-absolute text-center ds">
               <a routerLink="/info-seller/{{user.id}}" class="item-media h-100 w-100 d-block">

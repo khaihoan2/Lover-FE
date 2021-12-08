@@ -25,10 +25,12 @@ export class ReservationService {
     return this.httpClient.get<Reservation[]>(`${RESERVATION_API_URL}/cart/${id}`);
   }
 
+
+
   accessInputStatus(id: any): Observable<any> {
     this.reservation = {
       id: id,
-      status: true
+      status: 'Completed'
     }
     return this.httpClient.put(`${RESERVATION_API_URL}/${id}`, this.reservation);
   }

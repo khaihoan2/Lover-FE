@@ -4,13 +4,17 @@ import {InfoSellerComponent} from './info-seller/info-seller.component';
 import {IndexComponent} from './index/index.component';
 import {CartComponent} from './cart/cart.component';
 import {InfoCartComponent} from './info-cart/info-cart.component';
+import {SuggestionsComponent} from './suggestions/suggestions.component';
+import {TopModelComponent} from './top-model/top-model.component';
 
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'info-seller/:id', component: InfoSellerComponent},
   {path: 'cart/:id', component: CartComponent},
-  {path: 'cart-info/:id', component: InfoCartComponent}
+  {path: 'cart-info/:id', component: InfoCartComponent},
+  {path: 'suggestions', component: SuggestionsComponent},
+  {path: 'top-lover', component: TopModelComponent}
 ];
 
 @NgModule({
