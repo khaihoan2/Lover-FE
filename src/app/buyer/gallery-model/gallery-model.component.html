@@ -1,3 +1,53 @@
+<!--<div class="modal search-user" aria-hidden="true">-->
+<!--  <div class="my-modal-dialog">-->
+<!--    <div class="modal-content container">-->
+<!--      <div class="container">-->
+<!--        <div class="modal-header">-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="tab-container">-->
+<!--          <div>-->
+<!--            <form class="mb-0">-->
+<!--              <div class="row">-->
+<!--                <div class="col-md-6 col-12">-->
+<!--                  <h4>Lover name</h4>-->
+<!--                  <input id="search-username" type="search" name="username" [(ngModel)]="username" placeholder="Username" value="">-->
+<!--                </div>-->
+<!--                <div class="col-md-6 col-12">-->
+<!--                  <h4>Full name</h4>-->
+<!--                  <input id="search-full-name" type="search" name="firstName" [(ngModel)]="firstName" placeholder="Full name" value="">-->
+<!--                </div>-->
+<!--                <div class="col-12 pt-30">-->
+<!--                  <h4>View</h4>-->
+<!--                </div>-->
+<!--                <div class="col-6 py-30">-->
+<!--                  <label for="view-min" class="form-label">Min</label>-->
+<!--                  <input id="view-min" type="search" name="viewCounter" [(ngModel)]="viewCounterMin" placeholder="View min">-->
+<!--                  &lt;!&ndash;                  <input type="range" class="form-range slider" id="view-min" style="width: 100%" min="0" max="1000">&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="col-6 py-30">-->
+<!--                  <label for="view-max" class="form-label">Max</label>-->
+<!--                  <input id="view-max" type="search" name="viewCounter" [(ngModel)]="viewCounterMax" placeholder="View max">-->
+<!--                  &lt;!&ndash;                  <input type="range" class="form-range slider" id="view-max" style="width: 100%" min="0" max="1000">&ndash;&gt;-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer row">-->
+<!--          <div class="col-md-12">-->
+<!--            <button class="btn-search" type="button" style="width: 100%; color: #000" (click)="submit()">-->
+<!--              Search-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
 <section id="gallery"
          class="gallery-section gallery-6 bottom_mask_add overflow-visible ds s-pt-115 s-pb-70 s-pb-md-80 s-pt-md-135 s-pb-xl-155 s-pt-xl-205">
   <div class="container-fluid">
@@ -16,15 +66,6 @@
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
         <div class="row masonry-layout c-gutter-30 c-mb-30">
-
-        <form (ngSubmit)="submid()">
-          <input type="search" name="username" [(ngModel)]="username" placeholder="username">
-          <input type="search" name="firstName" [(ngModel)]="firstName" placeholder="firstName">
-          <input type="search" name="viewCounter" [(ngModel)]="viewCounterMin" placeholder="viewCounterMin">
-          <input type="search" name="viewCounter" [(ngModel)]="viewCounterMax" placeholder="viewCounterMax">
-          <button type="submit">search</button>
-        </form>
-
 
         <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">

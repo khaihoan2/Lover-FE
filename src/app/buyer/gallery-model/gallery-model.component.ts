@@ -72,13 +72,14 @@ export class GalleryModelComponent implements OnInit {
     this.currentPage = page;
     this.findUserByDescJoinedAt(this.currentPage);
   }
-  submid() {
-    if (this.username === undefined && this.firstName === undefined) {
-     return this.username = '', this.firstName = '';
-    }
-    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
-      this.users = data.content;
-    }, error => alert(error));
+
+  submit() {
+    // if (this.username === undefined && this.firstName === undefined) {
+    //  return this.username = '', this.firstName = '';
+    // }
+    // this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
+    //   this.users = data.content;
+    // }, error => alert(error));
   }
 
 }
