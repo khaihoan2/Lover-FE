@@ -40,7 +40,7 @@ export class UserService {
     return this.httpClient.post(`${AUTH_API_URL}/register`, user);
   }
 
-  findUserByJoinedAtDesc(page: number): Observable<any> {
+  findUserByDescJoinedAt(page: number): Observable<any> {
     return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`);
   }
 
@@ -54,5 +54,9 @@ export class UserService {
 
   findUserSuitable(): Observable<any> {
     return this.httpClient.get(`${USER_API_URL}/suitableProposal`);
+  }
+
+  getTotalElementDescJoinedAt(): Observable<number> {
+    return this.httpClient.get<number>(`${USER_API_URL}/gallery/totalElement`);
   }
 }

@@ -27,7 +27,7 @@ export class NewFaceComponent implements OnInit {
   }
 
   findUserByJoinedAtDesc(page: number) {
-    this.userService.findUserByJoinedAtDesc(page).subscribe(data => {
+    this.userService.findUserByDescJoinedAt(page).subscribe(data => {
       this.users = data;
       for (let i = 0; i < this.users.length; i++) {
         this.count.push(i);

@@ -25484,3 +25484,13 @@ img.absolute_image {
   text-transform: uppercase;
   padding: 8px 12px;
 }
+
+.current-page {
+  background-color: #e41779 !important;
+  color: #fff !important;
+  cursor: not-allowed;
+}
+
+.page-not-allowed {
+  cursor: not-allowed;
+}

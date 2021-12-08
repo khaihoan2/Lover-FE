@@ -1,5 +1,6 @@
-<section id="gallery" class="gallery-section gallery-6 bottom_mask_add overflow-visible ds s-pt-115 s-pb-70 s-pb-md-80 s-pt-md-135 s-pb-xl-155 s-pt-xl-205">
-<div class="container-fluid">
+<section id="gallery"
+         class="gallery-section gallery-6 bottom_mask_add overflow-visible ds s-pt-115 s-pb-70 s-pb-md-80 s-pt-md-135 s-pb-xl-155 s-pt-xl-205">
+  <div class="container-fluid">
     <div class="row">
       <div class="fw-divider-space hidden-below-xl pt-70"></div>
       <div class="col-lg-12">
@@ -61,34 +62,19 @@
           </div>
         </div>
 
-        <nav class="navigation pagination" style="justify-content: center" role="navigation">
+        <nav class="navigation pagination" role="navigation" style="justify-content: center">
           <h2 class="screen-reader-text">Posts navigation</h2>
           <div class="nav-links">
-            <a class="prev page-numbers" href="blog-right.html">
+            <a class="prev page-numbers" [ngClass]="currentPage == 0 ? 'page-not-allowed' : ''" (click)="changePage(currentPage - 1)">
               <i class="fa fa-chevron-left"></i>
               <span class="screen-reader-text">Previous page</span>
             </a>
-            <a class="page-numbers" href="blog-right.html">
+            <a id="page-number{{page}}" class="page-numbers" *ngFor="let page of totalPage" (click)="changePage(page)"
+               [ngClass]="currentPage == page ? 'current-page' : ''">
               <span class="meta-nav screen-reader-text">Page </span>
-              1
+              {{page + 1}}
             </a>
-            <span class="page-numbers current">
-										<span class="meta-nav screen-reader-text">Page </span>
-										2
-									</span>
-            <a class="page-numbers" href="blog-right.html">
-              <span class="meta-nav screen-reader-text">Page </span>
-              3
-            </a>
-            <a class="page-numbers" href="blog-right.html">
-              <span class="meta-nav screen-reader-text">Page </span>
-              ...
-            </a>
-            <a class="page-numbers" href="blog-right.html">
-              <span class="meta-nav screen-reader-text">Page </span>
-              12
-            </a>
-            <a class="next page-numbers" href="blog-right.html">
+            <a class="next page-numbers" [ngClass]="currentPage == totalPage.length - 1 ? 'page-not-allowed' : ''" (click)="changePage(currentPage + 1)">
               <span class="screen-reader-text">Next page</span>
               <i class="fa fa-chevron-right"></i>
             </a>
