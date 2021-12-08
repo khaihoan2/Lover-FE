@@ -38,7 +38,6 @@
             <th class="product-name">Lover</th>
             <th class="product-quantity">Time</th>
             <th class="product-subtotal">Total</th>
-            <th class="product-subtotal">Action</th>
             <th class="product-subtotal">Info</th>
           </tr>
           </thead>
@@ -68,12 +67,6 @@
 												<span class="amount">
 													<span>$</span>{{reservation.totalMoney}}
 												</span>
-            </td>
-
-            <td>
-              <button *ngIf="reservation.status == false" type="button" class="my-btn-main"
-                      (click)="complete(reservation.id)">Complete
-              </button>
             </td>
 
             <td>

@@ -14,7 +14,7 @@
         </div>
         <div class="fw-divider-space hidden-below-lg pt-10"></div>
 
-        <div class="row isotope-wrapper masonry-layout c-gutter-30 c-mb-30" data-animation="fadeInDown" data-filters=".gallery-filters">
+        <div class="row masonry-layout c-gutter-30 c-mb-30">
           <div class="col-sm-6 col-lg-4 col-lgx-3 col-xl-3" *ngFor="let user of users">
             <div class="vertical-item item-gallery content-absolute text-center ds">
               <a routerLink="/info-seller/{{user.id}}" class="item-media h-100 w-100 d-block">
@@ -61,12 +61,39 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="fw-divider-space pt-20 hidden-above-lg"></div>
-          <div class="col-12 text-center">
-            <div class="btn btn-maincolor">all models</div>
+        <nav class="navigation pagination" style="justify-content: center" role="navigation">
+          <h2 class="screen-reader-text">Posts navigation</h2>
+          <div class="nav-links">
+            <a class="prev page-numbers" href="blog-right.html">
+              <i class="fa fa-chevron-left"></i>
+              <span class="screen-reader-text">Previous page</span>
+            </a>
+            <a class="page-numbers" href="blog-right.html">
+              <span class="meta-nav screen-reader-text">Page </span>
+              1
+            </a>
+            <span class="page-numbers current">
+										<span class="meta-nav screen-reader-text">Page </span>
+										2
+									</span>
+            <a class="page-numbers" href="blog-right.html">
+              <span class="meta-nav screen-reader-text">Page </span>
+              3
+            </a>
+            <a class="page-numbers" href="blog-right.html">
+              <span class="meta-nav screen-reader-text">Page </span>
+              ...
+            </a>
+            <a class="page-numbers" href="blog-right.html">
+              <span class="meta-nav screen-reader-text">Page </span>
+              12
+            </a>
+            <a class="next page-numbers" href="blog-right.html">
+              <span class="screen-reader-text">Next page</span>
+              <i class="fa fa-chevron-right"></i>
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   </div>
