@@ -25546,3 +25546,11 @@ img.absolute_image {
   background: #e5107a;
   cursor: pointer;
 }
+
+.custom-comment-content {
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  font-size: 16px;
+
+}
