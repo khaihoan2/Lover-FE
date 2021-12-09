@@ -4,6 +4,7 @@ import {AUTH_API_URL} from '../api-urls';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserToken} from '../model/user-token';
 import {Router} from '@angular/router';
+import {NotificationService} from './notification/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthenticationService {
   userToken: UserToken = {};
 
   constructor(private httpClient: HttpClient,
+              private notificationService: NotificationService,
               private router: Router) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('userToken')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -30,7 +32,7 @@ export class AuthenticationService {
         this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('userToken')));
         this.currentUser = this.currentUserSubject.asObservable();
         this.router.navigate(['']);
-      })
+      }, error => this.notificationService.notify('error', 'Incorrect account or password'));
   }
 
   logout(): Observable<any> {

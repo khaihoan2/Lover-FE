@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {UserService} from '../../service/user/user.service';
 import {NotificationService} from '../../service/notification/notification.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +18,8 @@ export class RegisterComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', Validators.required)
+    phone: new FormControl('', Validators.required),
+    gender: new FormControl('', Validators.required)
   })
 
   user: User = {};
@@ -31,9 +34,21 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    if (this.gender.errors == null) {
+      $('#gender-validate').text('');
+    } else if (this.gender.errors.required) {
+        $('#gender-validate').text('Gender is required');
+        return;
+    }
+    if (this.username.errors != null ||
+      this.password.errors != null ||
+      this.phone.errors != null ||
+      this.email.errors != null) {
+      $('#message-validate-form').text('You need to enter enough personal information')
+      return;
+    }
     this.user = this.userForm.value;
     this.userService.register(this.user).subscribe(data => {
-      console.log(data);
       this.notificationService.notify('success', 'Account successfully created')
       this.router.navigate(['/auth/login']);
     }, error => this.notificationService.notify('error', 'Error'));
@@ -53,6 +68,10 @@ export class RegisterComponent implements OnInit {
 
   get phone() {
     return this.userForm.get('phone');
+  }
+
+  get gender() {
+    return this.userForm.get('gender');
   }
 
   checkUsernameDuplicate(event) {

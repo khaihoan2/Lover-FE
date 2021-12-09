@@ -28,7 +28,7 @@
               <!-- .entry-header -->
               <div class="entry-content">
                 <div class="woocommerce">
-                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="!checkUsername && userForm.valid && register()">
+                  <form class="woocomerce-form woocommerce-form-login login" method="post" [formGroup]="userForm" (ngSubmit)="register()">
                     <div class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-20">
                       <input type="text" placeholder="Username" class="woocommerce-Input w-100 woocommerce-Input--text input-text" formControlName="username" (change)="checkUsernameDuplicate($event)">
                       <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" style="color: red">
@@ -78,15 +78,27 @@
                         </div>
                       </div>
                     </div>
+                    <div class="form-check">
+                      <div class="row">
+                        <div class="col">
+                          <input type="radio" id="male" name="gender" value="Male" formControlName="gender">
+                          <label for="male">Male</label>
+                        </div>
+                        <div class="col">
+                          <input type="radio" id="female" name="gender" value="Female" formControlName="gender">
+                          <label for="female">Female</label>
+                        </div>
+                      </div>
+                      <div id="gender-validate" class="mb-40" style="color: red">
 
-                    <p class="form-row d-flex flex-wrap justify-content-between">
-                      <label class="woocommerce-form__label d-flex woocommerce-form__label-for-checkbox inline">
-                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever">
-                        <span class="ml-2">Remember me</span>
-                      </label>
-                    </p>
+                      </div>
+                      <div id="message-validate-form" class="mb-40" style="color: red">
+
+                      </div>
+                    </div>
+
                     <p class="form-row align-items-start d-flex flex-wrap justify-content-between">
-                      <input type="submit" class="woocommerce-Button button mt-0" name="login" value="Signup">
+                      <input type="submit" class="woocommerce-Button button mt-0" name="login" value="Register">
                     </p>
                   </form>
                 </div>
