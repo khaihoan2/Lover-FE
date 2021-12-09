@@ -44,8 +44,8 @@ export class UserService {
     return this.httpClient.get(`${USER_API_URL}/gallery?page=${page}`)
   };
 
-  findByUserFull(username: string, firstName: string, viewCounterMin: number, viewCounterMax: number, page: number): Observable<User[]> {
-    return this.httpClient.get<User[]>
+  findByUserFull(username: string, firstName: string, viewCounterMin: string, viewCounterMax: string, page: number): Observable<any[]> {
+    return this.httpClient.get<any[]>
     (`${USER_API_URL}/search?username=${username}&firstName=${firstName}
     &viewCounterMin=${viewCounterMin}&viewCounterMax=${viewCounterMax}`);
   }

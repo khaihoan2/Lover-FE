@@ -15,8 +15,8 @@ export class GalleryModelComponent implements OnInit {
 
   username: string;
   firstName: string;
-  viewCounterMin: number;
-  viewCounterMax: number;
+  viewCounterMin: string;
+  viewCounterMax: string;
   users: User[] = [];
 
   totalElementDescJoinedAt = 0;
@@ -74,12 +74,23 @@ export class GalleryModelComponent implements OnInit {
   }
 
   submit() {
-    // if (this.username === undefined && this.firstName === undefined) {
-    //  return this.username = '', this.firstName = '';
-    // }
-    // this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
-    //   this.users = data.content;
-    // }, error => alert(error));
+    if (this.username == undefined) {
+      this.username = '';
+    }
+    if (this.firstName == undefined) {
+      this.firstName = '';
+    }
+    if (this.viewCounterMin == undefined) {
+      this.viewCounterMin = '';
+    }
+    if (this.viewCounterMax == undefined) {
+      this.viewCounterMax = '';
+    }
+    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
+      this.users = data.content;
+      // this.totalElementDescJoinedAt = data.total_pages;
+      // this.currentPage = data.page;
+    }, error => alert(error));
   }
 
 }
