@@ -23,10 +23,11 @@ import { TopSixModelComponent } from './top-six-model/top-six-model.component';
 import { TopTwelveEightFemaleFourMaleComponent } from './top-twelve-eight-female-four-male/top-twelve-eight-female-four-male.component';
 import { SuitableProposalComponent } from './suitable-proposal/suitable-proposal.component';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
+import { Error404Component } from './error404/error404.component';
 
 
 @NgModule({
-  declarations: [DescriptionComponent, OutModelComponent, GalleryModelComponent, QuoteComponent, NewFaceComponent, TeamComponent, ContactComponent, FooterComponent, InfoSellerComponent, PageSliderComponent, HeaderComponent, PageSliderComponent, ContactComponent, DescriptionComponent, OutModelComponent, QuoteComponent, TeamComponent, TopModelComponent, IndexComponent, RentComponent, CartComponent, InfoCartComponent, TopSixModelComponent, TopTwelveEightFemaleFourMaleComponent, SuitableProposalComponent, SuggestionsComponent],
+  declarations: [DescriptionComponent, OutModelComponent, GalleryModelComponent, QuoteComponent, NewFaceComponent, TeamComponent, ContactComponent, FooterComponent, InfoSellerComponent, PageSliderComponent, HeaderComponent, PageSliderComponent, ContactComponent, DescriptionComponent, OutModelComponent, QuoteComponent, TeamComponent, TopModelComponent, IndexComponent, RentComponent, CartComponent, InfoCartComponent, TopSixModelComponent, TopTwelveEightFemaleFourMaleComponent, SuitableProposalComponent, SuggestionsComponent, Error404Component],
   exports: [
     FooterComponent,
     HeaderComponent,

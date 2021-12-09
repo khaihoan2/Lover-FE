@@ -6,6 +6,7 @@ import {CartComponent} from './cart/cart.component';
 import {InfoCartComponent} from './info-cart/info-cart.component';
 import {SuggestionsComponent} from './suggestions/suggestions.component';
 import {TopModelComponent} from './top-model/top-model.component';
+import {Error404Component} from './error404/error404.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'cart/:id', component: CartComponent},
   {path: 'cart-info/:id', component: InfoCartComponent},
   {path: 'suggestions', component: SuggestionsComponent},
-  {path: 'top-lover', component: TopModelComponent}
+  {path: 'top-lover', component: TopModelComponent},
+  {path: '404', component: Error404Component}
 ];
 
 @NgModule({

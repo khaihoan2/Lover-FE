@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user/user.service';
 import {USER_API_URL} from '../../api-urls';
+import {NotificationService} from '../../service/notification/notification.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-gallery-model',
@@ -26,7 +29,9 @@ export class GalleryModelComponent implements OnInit {
   currentPage = 0;
 
   constructor(private userService: UserService,
-              private activatedRoute: ActivatedRoute) {
+              private notificationService: NotificationService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -88,9 +93,17 @@ export class GalleryModelComponent implements OnInit {
     }
     this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
       this.users = data.content;
+      $('.search-user').modal('hide');
+      if (this.users.length == 0) {
+        this.router.navigate(['/404'])
+      }
       // this.totalElementDescJoinedAt = data.total_pages;
       // this.currentPage = data.page;
-    }, error => alert(error));
+    }, error => {
+      $('.search-user').modal('hide');
+      this.router.navigate(['/404'])
+      this.notificationService.notify('error', "Error");
+    });
   }
 
 }

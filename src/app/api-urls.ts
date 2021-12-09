@@ -14,3 +14,5 @@ export const RESERVATION_API_URL = `${environment.reservationApiUrl}`;
 
 export const RESERVATION_DETAIL_API_URL = `${environment.reservationDetailApiUrl}`;
 
+export const FEEDBACK_API_URL = `${environment.feedBackApiUrl}`;
+

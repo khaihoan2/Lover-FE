@@ -1,5 +1,85 @@
 <app-header></app-header>
 
+<div class="modal fade feedback-card" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ds">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+        <button type="button" class="close color-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div
+          data-animation="scaleAppear">
+          <form class="contact-form c-mb-20 c-gutter-20">
+            <div class="input-group form-group">
+              <div class="container">
+                <div class="row text-center">
+                  <span id="star1" class="col color-main star" (click)="clickStar(1)">
+                    <i class="fa fa-star-o" style="font-size: 40px"></i>
+                  </span>
+                  <span id="star2" class="col color-main star" (click)="clickStar(2)">
+                    <i class="fa fa-star-o" style="font-size: 40px"></i>
+                  </span>
+                  <span id="star3" class="col color-main star" (click)="clickStar(3)">
+                    <i class="fa fa-star-o" style="font-size: 40px"></i>
+                  </span>
+                  <span id="star4" class="col color-main star" (click)="clickStar(4)">
+                    <i class="fa fa-star-o" style="font-size: 40px"></i>
+                  </span>
+                  <span id="star5" class="col color-main star" (click)="clickStar(5)">
+                    <i class="fa fa-star-o" style="font-size: 40px"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea id="feedback-content" rows="6" cols="45" class="form-control" placeholder="your review"></textarea>
+              <button type="button" class="btn-submit" (click)="saveFeedback(reservation.id)"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="my-btn-close btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="my-btn-main" (click)="saveService()">Save</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+
+<div class="modal fade info-feedback" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ds">
+      <div class="modal-header">
+        <h5 class="modal-title">Info feedback</h5>
+        <button type="button" class="close color-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div data-animation="scaleAppear">
+          <div class="input-group form-group">
+            <div class="container">
+              <div id="user-star-feedback" class="row text-center">
+
+              </div>
+            </div>
+          </div>
+          <h2>{{feedback.content}}</h2>
+        </div>
+      </div>
+      <!--      <div class="modal-footer">-->
+      <!--        <button type="button" class="my-btn-close btn-secondary" data-dismiss="modal">Close</button>-->
+      <!--        <button type="button" class="my-btn-main" (click)="saveService()">Save</button>-->
+      <!--      </div>-->
+    </div>
+  </div>
+</div>
+
 <section class="page_title s-parallax bottom_mask_subtract s-overlay ds title-overlay s-py-md-25">
   <div class="container">
     <div class="row">
@@ -36,6 +116,12 @@
             <h1 class="entry-title">Order received</h1>
             <span class="edit-link">
               <button *ngIf="reservation.status == 'Accepted'" type="button" class="my-btn-main" (click)="completed(reservation.id)">Completed</button>
+            </span>
+            <span class="edit-link">
+              <button *ngIf="reservation.status == 'Completed' && !feedback" type="button" class="my-btn-main" data-toggle="modal" data-target=".feedback-card">Feedback</button>
+            </span>
+            <span class="edit-link">
+              <button *ngIf="feedback" type="button" class="my-btn-main" data-toggle="modal" data-target=".info-feedback">your feedback</button>
             </span>
           </header>
           <!-- .entry-header -->
