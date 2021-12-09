@@ -6,7 +6,7 @@
           <li>
             <span>
               <a routerLink="/auth/login" *ngIf="!currentUser"><i class="fa fa-user"></i> Login</a>
-              <a routerLink="/cart/{{currentUser.id}}" *ngIf="currentUser">
+              <a routerLink="/profile" *ngIf="currentUser">
                 <i class="fa fa-user"></i>
                       {{currentUser.name}}
               </a>

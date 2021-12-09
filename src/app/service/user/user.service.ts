@@ -24,8 +24,8 @@ export class UserService {
     return this.httpClient.post<User>(USER_API_URL, user);
   }
 
-  edit(user: User, id: number): Observable<User> {
-    return this.httpClient.put<User>(USER_API_URL + `/${id}`, user);
+  edit(user: any, id: number): Observable<User> {
+    return this.httpClient.put<User>(USER_API_URL + `/user/${id}`, user);
   }
 
   deleteById(id: number): Observable<any> {

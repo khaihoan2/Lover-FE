@@ -7,6 +7,7 @@ import {InfoCartComponent} from './info-cart/info-cart.component';
 import {SuggestionsComponent} from './suggestions/suggestions.component';
 import {TopModelComponent} from './top-model/top-model.component';
 import {Error404Component} from './error404/error404.component';
+import {ProfileUserComponent} from './profile-user/profile-user.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'cart-info/:id', component: InfoCartComponent},
   {path: 'suggestions', component: SuggestionsComponent},
   {path: 'top-lover', component: TopModelComponent},
+  {path: 'profile', component: ProfileUserComponent},
   {path: '404', component: Error404Component}
 ];
 

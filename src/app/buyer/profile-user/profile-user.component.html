@@ -1,0 +1,104 @@
+<div class="modal fade edit-profile-user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ds">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit profile</h5>
+        <button type="button" class="close color-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div data-animation="scaleAppear">
+          <div class="row">
+            <div class="col-lg-7 col-xl-8">
+              <form class="contact-form c-mb-20 c-gutter-20" [formGroup]="userForm" (ngSubmit)="editProfile(user.id)">
+                <div class="row">
+                  <div class="col-sm-6 my-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="first name" formControlName="firstName">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 my-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="last name" formControlName="lastName">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 my-3">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="email address"
+                             formControlName="email">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 my-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="phone" formControlName="phone">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 my-3">
+                    <div class="form-group">
+                      <input type="file" id="file-avatar" class="form-control" placeholder="Avatar..."
+                             (change)="onFileImage($event)">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 my-3">
+                    <div class="form-group">
+                      <textarea rows="6" cols="45" name="message" class="form-control" placeholder="Description..."
+                                formControlName="description"></textarea>
+                      <button type="submit" class="btn-submit"><i class="fa fa-paper-plane"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="color: #ffffff">
+  <div class="">
+    <div class="logo-customer">
+      <a routerLink="" class="logo">
+        <img src="../../../assets/images/logo.png" alt="img"/>
+      </a>
+    </div>
+    <div class="upper">
+      <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid">
+    </div>
+    <div class="user text-center">
+      <div class="profile">
+        <img src="{{apiUrl + '/' + user.avatar}}" class="rounded-circle" width="80">
+      </div>
+    </div>
+    <div class="mt-80 text-center container">
+      <h4 class="my-25">{{user.firstName + " " + user.lastName}}</h4> <span
+      class="text-muted d-block mb-2">{{user.city}}</span>
+      <div class="row center">
+        <div class="col">
+          <button class="btn my-btn-main mr-2" data-toggle="modal" data-target=".edit-profile-user">
+            Edit profile
+          </button>
+        </div>
+        <div class="col">
+          <button (click)="routerLinkCart(user.id)" class="btn my-btn-main ml-2">Carts</button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+        <div class="stats">
+          <p class="mb-0">Join At</p> <span>{{user.joinedAt}}</span>
+        </div>
+        <div class="stats">
+          <p class="mb-0">Phone</p> <span>{{user.phone}}</span>
+        </div>
+        <div class="stats">
+          <p class="mb-0">Email</p> <span>{{user.email}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mb-60"></div>
+<app-footer></app-footer>
