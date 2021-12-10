@@ -13,6 +13,9 @@
           <li class="breadcrumb-item">
             <a routerLink="">Home</a>
           </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/profile">Profile</a>
+          </li>
           <li class="breadcrumb-item active">
             Total shopping cart
           </li>
@@ -27,7 +30,7 @@
 </section>
 
 <section class="ds s-pt-70 s-pb-80 s-py-md-100 s-py-xl-150">
-  <div class="py-30 container">
+  <div class="py-30 container" *ngIf="reservations.length != 0">
     <div class="row">
       <div class="col-lg-12">
         <table class="shop_table shop_table_responsive cart">

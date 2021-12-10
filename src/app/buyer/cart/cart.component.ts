@@ -3,6 +3,7 @@ import {ReservationService} from '../../service/reservation.service';
 import {Reservation} from '../../model/reservation';
 import {ActivatedRoute, Router} from '@angular/router';
 import {API_URL} from '../../api-urls';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,19 +18,20 @@ export class CartComponent implements OnInit {
 
   constructor(private reservationService: ReservationService,
               private activatedRoute: ActivatedRoute,
+              private notificationService: NotificationService,
               private router: Router) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(param => {
-      let id = param.get('id');
-      this.findByRenter(id);
-    })
+    this.findByRenter();
   }
 
-  findByRenter(id: any) {
-    this.reservationService.findByRenter(id).subscribe(data => {
+  findByRenter() {
+    this.reservationService.findByRenter().subscribe(data => {
       this.reservations = data;
-    }, error => console.log(error.message));
+      if (this.reservations.length == 0) {
+        this.router.navigate(['/404'])
+      }
+    }, error => this.notificationService.notify('error', 'Failed search'));
   }
 
   showInfoCart(id: any) {
@@ -38,7 +40,7 @@ export class CartComponent implements OnInit {
 
   complete(id: any) {
     this.reservationService.accessInputStatus(id).subscribe(data => {
-
+      this.notificationService.notify('success', 'Congratulations on your successful appointment')
     }, error => console.log(error.message));
   }
 }

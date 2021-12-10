@@ -89,16 +89,20 @@
     <div class="row">
 
       <div class="fw-divider-space hidden-below-lg mt-160"></div>
-      <div class="fw-divider-space hidden-above-lg mt-100"></div>
+      <div class="fw-divider-space hidden-ab
+      ove-lg mt-100"></div>
 
       <div class="col-md-12 text-center">
-        <h1>Account Details</h1>
+        <h1>Cart Info</h1>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a routerLink="">Home</a>
           </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/profile">Profile</a>
+          </li>
           <li class="breadcrumb-item active">
-            Account Details
+            Cart info
           </li>
         </ol>
       </div>
@@ -165,6 +169,10 @@
 
                   <li class="woocommerce-order-overview__date date">
                     Location: <strong>{{reservation.location}}</strong>
+                  </li>
+
+                  <li class="woocommerce-order-overview__date date">
+                    Phone number: <strong>{{reservation.rentee.phone}}</strong>
                   </li>
 
                 </ul>

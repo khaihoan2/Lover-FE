@@ -59,7 +59,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   routerLinkCart(id: any) {
-    this.router.navigate([`/cart/${id}`]);
+    this.router.navigate([`/cart`]);
   }
 
   editProfile(id: number) {
@@ -74,6 +74,7 @@ export class ProfileUserComponent implements OnInit {
     }
     this.userService.edit(formData, id).subscribe(data => {
       this.user = data;
+      this.findByUser();
       this.notificationService.notify('success', 'Edit successfully');
     }, error => this.notificationService.notify('error', 'Edit error'));
   }
@@ -84,5 +85,19 @@ export class ProfileUserComponent implements OnInit {
     } else {
       this.fileAvatar = null;
     }
+  }
+
+  createPendingUser() {
+    let user = {
+      id: this.userToken.id,
+      status: 'Pending'
+    }
+    this.userService.editStatusUser(user, this.userToken.id).subscribe(data => {
+      this.notificationService.notify('success', 'Admin will review your profile');
+    }, error => this.notificationService.notify('error', 'Error'));
+  }
+
+  routeAdmin() {
+
   }
 }

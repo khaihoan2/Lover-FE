@@ -65,4 +65,12 @@ export class UserService {
   getTotalElementDescJoinedAt(): Observable<number> {
     return this.httpClient.get<number>(`${USER_API_URL}/gallery/totalElement`);
   }
+
+  findUsersByUsername(username: string): Observable<any> {
+    return this.httpClient.get(`${USER_API_URL}?q=${username}`);
+  }
+
+  editStatusUser(user: any, id: number) {
+    return this.httpClient.put<User>(USER_API_URL + `/user/pending/${id}`, user);
+  }
 }

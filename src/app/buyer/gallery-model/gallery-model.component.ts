@@ -68,6 +68,9 @@ export class GalleryModelComponent implements OnInit {
   }
 
   changePage(page: number) {
+    if (page == this.currentPage) {
+      return;
+    }
     if (page < 0) {
       return;
     }
@@ -78,7 +81,7 @@ export class GalleryModelComponent implements OnInit {
     this.findUserByDescJoinedAt(this.currentPage);
   }
 
-  submit() {
+  searchUser(page: number) {
     if (this.username == undefined) {
       this.username = '';
     }
@@ -91,19 +94,18 @@ export class GalleryModelComponent implements OnInit {
     if (this.viewCounterMax == undefined) {
       this.viewCounterMax = '';
     }
-    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, 0).subscribe((data: any) => {
+    this.userService.findByUserFull(this.username, this.firstName, this.viewCounterMin, this.viewCounterMax, page).subscribe((data: any) => {
       this.users = data.content;
       $('.search-user').modal('hide');
       if (this.users.length == 0) {
         this.router.navigate(['/404'])
       }
-      // this.totalElementDescJoinedAt = data.total_pages;
-      // this.currentPage = data.page;
+      this.currentPage = data.page;
+      $('#search-user').hide();
     }, error => {
       $('.search-user').modal('hide');
       this.router.navigate(['/404'])
       this.notificationService.notify('error', "Error");
     });
   }
-
 }

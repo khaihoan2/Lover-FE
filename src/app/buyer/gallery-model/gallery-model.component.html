@@ -38,7 +38,7 @@
         </div>
         <div class="modal-footer row">
           <div class="col-md-12">
-            <button class="btn-search" type="button" style="width: 100%; color: #000" (click)="submit()">
+            <button class="btn-search" type="button" style="width: 100%; color: #000" (click)="searchUser(0)">
               Search
             </button>
           </div>
@@ -112,7 +112,7 @@
           </div>
         </div>
 
-        <nav class="navigation pagination" role="navigation" style="justify-content: center">
+        <nav id="search-user" class="navigation pagination" role="navigation" style="justify-content: center">
           <h2 class="screen-reader-text">Posts navigation</h2>
           <div class="nav-links">
             <a class="prev page-numbers" [ngClass]="currentPage == 0 ? 'page-not-allowed' : ''" (click)="changePage(currentPage - 1)">
@@ -134,4 +134,3 @@
     </div>
   </div>
 </section>
-

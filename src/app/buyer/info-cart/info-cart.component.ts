@@ -49,7 +49,7 @@ export class InfoCartComponent implements OnInit {
 
   completed(id: any) {
     this.reservationService.accessInputStatus(id).subscribe(data => {
-      this.notificationService.notify('success', 'Success');
+      this.notificationService.notify('success', 'Congratulations on your successful appointment');
       this.activatedRoute.paramMap.subscribe(param => {
         let id = param.get('id');
         this.findById(id);

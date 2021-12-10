@@ -13,7 +13,7 @@ import {ProfileUserComponent} from './profile-user/profile-user.component';
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'info-seller/:id', component: InfoSellerComponent},
-  {path: 'cart/:id', component: CartComponent},
+  {path: 'cart', component: CartComponent},
   {path: 'cart-info/:id', component: InfoCartComponent},
   {path: 'suggestions', component: SuggestionsComponent},
   {path: 'top-lover', component: TopModelComponent},

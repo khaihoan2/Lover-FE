@@ -21,8 +21,8 @@ export class ReservationService {
     return this.httpClient.get(`${RESERVATION_API_URL}/${id}`);
   }
 
-  findByRenter(id: any): Observable<Reservation[]> {
-    return this.httpClient.get<Reservation[]>(`${RESERVATION_API_URL}/cart/${id}`);
+  findByRenter(): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(`${RESERVATION_API_URL}/cart`);
   }
 
 
